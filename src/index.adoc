@@ -1,0 +1,16 @@
+// Include headers in all files to support Atom's Asciidoc Preview plugin.
+:imagesdir: assets
+include::header.adoc[]
+
+= Title of Your Book
+
+Welcome to Lorem Ipsum Book!
+
+Before you start writing the book, you should edit `docs.json` file to contain
+the correct `alias` of your book.
+
+The `read` argument describes which repositories enable the user to access the
+book hosted on we.vacuumlabs.com.
+
+== Some Example Chapter
+include::example/index.adoc[]

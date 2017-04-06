@@ -1,0 +1,28 @@
+// Include headers in all files to support Atom's Asciidoc Preview plugin.
+include::../header.adoc[]
+// Set the assets directory if the file is loaded individually. This makes
+// images working with Atom's Asciidoc Preview plugin.
+ifndef::imagesdir[]
+:imagesdir: ../../assets
+endif::imagesdir[]
+
+This is just an example chapter.
+
+=== AsciiDoc Playground
+AsciiDoc has a very simple syntax. Headers are
+indicated by the = sign.
+
+Paragraphs are created by leaving an empty line.
+
+Beware,
+line
+breaks
+are ignored.
+
+AsciiDoc supports *bold*, _italic_, and `monospace` text.
+
+NOTE: There is a lot of cool stuff supported by AsciiDoc. Just read the
+link:http://asciidoctor.org/docs/user-manual[ultimate user manual].
+
+TIP: Did you know, that you can use variables like {Samo} or even links to
+{handbook}[various documents^]?

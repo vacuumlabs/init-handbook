@@ -1,0 +1,18 @@
+machine:
+  node:
+    version: 7.2.1
+
+dependencies:
+  pre:
+    - npm install -g antman-cli
+
+test:
+  override:
+    - bundle exec asciidoctor src/index.adoc -D dist
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - cp docs.json .docsignore assets -R dist/
+      - antman upload -a -k $API_KEY https://we.vacuumlabs.com ./dist

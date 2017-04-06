@@ -1,0 +1,4 @@
+{
+  "alias": "lorem-ipsum-book",
+  "read": ["lorem-ipsum-repo"]
+}

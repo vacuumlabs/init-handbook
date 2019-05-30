@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.3-jessie-node-browsers
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: "Build AsciiDoc files"
+          command: bundle exec asciidoctor src/index.adoc -D dist
+  deploy:
+    docker:
+      - image: circleci/ruby:2.3-jessie-node-browsers
+    steps:
+      - checkout
+      - run: bundle install
+      - run: cp docs.json .docsignore assets -R dist/
+      - run: bundle exec asciidoctor src/index.adoc -D dist
+      - run: sudo npm install -g antman-cli
+      - run: antman upload -a -k $API_KEY https://we.vacuumlabs.com ./dist
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

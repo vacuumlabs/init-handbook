@@ -1,0 +1,10 @@
+# Source files
+**/*.adoc
+**/*.md
+
+# Tools settings
+Gemfile
+Gemfile.lock
+Guardfile
+circle.yml
+vendor/**/*

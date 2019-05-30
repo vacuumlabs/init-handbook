@@ -1,1 +1,3 @@
-# Don't use this, until it gets updated!
+# Base handbook repo
+
+Create new handbook by cloning this repo

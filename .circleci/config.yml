@@ -1,11 +1,11 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
       - image: circleci/ruby:2.3-jessie-node-browsers
     steps:
       - checkout
-      - run: bundle install
+      - run: bundle install --deployment
       - run:
           name: "Build AsciiDoc files"
           command: bundle exec asciidoctor src/index.adoc -D dist
@@ -14,9 +14,16 @@ jobs:
       - image: circleci/ruby:2.3-jessie-node-browsers
     steps:
       - checkout
-      - run: bundle install
+      - restore_cache:
+        keys:
+        - v2-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: bundle install --deployment
       - run: cp docs.json .docsignore assets -R dist/
       - run: bundle exec asciidoctor src/index.adoc -D dist
+      - save_cache:
+        paths:
+        - vendor/bundle
+        key: v2-dependencies-{{ checksum "Gemfile.lock" }}
       - run: sudo npm install -g antman-cli
       - run: antman upload -a -k $API_KEY https://we.vacuumlabs.com ./dist
 

@@ -8,6 +8,8 @@ endif::imagesdir[]
 
 This is just an example chapter.
 
+image:logo_symbol.png["VL logo symbol",width=95,link="logo_symbol.png"]
+
 === AsciiDoc Playground
 AsciiDoc has a very simple syntax. Headers are
 indicated by the = sign.
